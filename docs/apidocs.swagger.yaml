@@ -2151,6 +2151,9 @@ definitions:
       enableLinkPreview:
         type: boolean
         description: enable_link_preview enables links preview.
+      enableMembersEdit:
+        type: boolean
+        title: enable_members_edit any member can edit workspace memos
   apiv1WorkspaceSetting:
     type: object
     properties:
