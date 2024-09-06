@@ -6,9 +6,7 @@ FROM neosmemo/memos:stable
 COPY --from=tini-stage /sbin/tini /sbin/tini
 
 EXPOSE 5230
-
 VOLUME ["/var/opt/memos"]
 
-ENTRYPOINT ["/sbin/tini", "--"]
-
-CMD ["memos"]
+COPY run-memos.sh /run-memos.sh
+ENTRYPOINT ["/sbin/tini", "--", "/run-memos.sh"]
