@@ -1,6 +1,9 @@
+FROM alpine:latest as tini-stage
+RUN apk update && apk add --no-cache tini
+
 FROM neosmemo/memos:stable
 
-RUN apk update && apk add --no-cache tini
+COPY --from=tini-stage /sbin/tini /sbin/tini
 
 EXPOSE 5230
 
