@@ -1,8 +1,9 @@
-FROM neosmemo/memos:stable
+FROM neosmemo/memos:stable as base
 
-FROM alpine:latest as tini-bash
+FROM alpine as tini-bash
 RUN apk add --no-cache tini bash
 
+FROM base
 COPY --from=tini-bash /sbin/tini /sbin/tini
 COPY --from=tini-bash /bin/bash /bin/bash
 
